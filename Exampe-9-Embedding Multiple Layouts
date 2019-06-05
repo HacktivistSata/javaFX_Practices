@@ -1,0 +1,52 @@
+
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import jdk.internal.org.objectweb.asm.Handle;
+
+public class Main extends Application{
+    Stage window;
+    Button btn;
+    public static void main(String args[]){
+        launch(args);
+    }
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        window = primaryStage;
+        window.setTitle("Embedding multiple layouts");
+
+        HBox topmenu = new HBox();
+        topmenu.setPadding(new Insets(15,12,15,12));
+        topmenu.setSpacing(10);
+        topmenu.setStyle("-fx-background-color: #336699");
+        
+        Button btnA = new Button("File");
+        Button btnB = new Button("Edit");
+        Button btnC = new Button("Selection");
+            topmenu.getChildren().addAll(btnA,btnB,btnC);
+        
+            VBox leftmenu = new VBox();
+        Button btnD = new Button("View");
+        Button btnE = new Button("Go");
+        Button btnF = new Button("Debug");
+         leftmenu.getChildren().addAll(btnD,btnE,btnF);
+
+         BorderPane border_Pane = new BorderPane();
+         border_Pane.setTop(topmenu);
+         border_Pane.setLeft(leftmenu);
+
+        
+        Scene scn = new Scene(border_Pane,300,250);
+        window.setScene(scn);
+        window.show();
+     }
+}
