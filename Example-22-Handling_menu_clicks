@@ -1,0 +1,89 @@
+import java.util.Observable;
+
+import com.sun.javafx.css.CssError.StringParsingError;
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.geometry.*;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+import jdk.internal.org.objectweb.asm.Handle;
+
+public class Main extends Application {
+    Stage window;
+    Button btn;
+    TableView<product> table;
+    TextField nameinput, priceinput, quantityinput;
+
+    public static void main(String args[]) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        window = primaryStage;
+        window.setTitle("Menus");
+
+        Menu filemenu = new Menu("_File");  //underscore is used for shortcut,if we hold alt+F or alt+E,then it open a FILE and EDIT menu
+        filemenu.setStyle("-fx-background-color:grey");
+        Menu editmenu = new Menu("_Edit");
+        editmenu.setStyle("-fx-background-color:grey");
+
+        MenuItem file = new MenuItem("New File...");
+        file.setOnAction(e -> System.out.println("New file is open...wait!!"));
+        filemenu.getItems().add(file);
+        filemenu.getItems().add(new MenuItem("New Window..."));
+        filemenu.getItems().add(new SeparatorMenuItem());
+        filemenu.getItems().add(new MenuItem("Open File..."));
+        filemenu.getItems().add(new MenuItem("Open Folder..."));
+
+        editmenu.getItems().add(new MenuItem("Undo                         ctrl+z"));
+        editmenu.getItems().add(new MenuItem("Redo                         ctrl+y"));
+        editmenu.getItems().add(new MenuItem("Cut                           ctrl+x"));
+        editmenu.getItems().add(new MenuItem("Copy                         ctrl+c"));
+
+       MenuBar menubar = new MenuBar();
+       menubar.getMenus().addAll(filemenu,editmenu);
+      // menubar.setStyle("-fx-background-color:grey");
+        BorderPane layout = new BorderPane();
+        layout.setTop(menubar);
+        
+
+        Scene scene = new Scene(layout, 600, 300);
+        window.setScene(scene);
+        window.show();
+    }
+
+    
+}
