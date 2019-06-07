@@ -1,0 +1,48 @@
+
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+import jdk.internal.org.objectweb.asm.Handle;
+
+public class Main extends Application{
+    Stage window;
+    Button btn;
+    public static void main(String args[]){
+        launch(args);
+    }
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        window = primaryStage;
+        window.setTitle("Dynamic GUI property");
+
+        TextField userinput = new TextField();
+        userinput.setMaxWidth(200);
+        Label firstlabel = new Label("Welcome to the site ");
+        Label secondlabel = new Label();
+
+        HBox bottomtext = new HBox(firstlabel,secondlabel);
+        bottomtext.setAlignment(Pos.CENTER);
+
+        VBox vbox = new VBox(10,userinput,bottomtext);
+        vbox.setAlignment(Pos.CENTER);
+
+        secondlabel.textProperty().bind(userinput.textProperty());
+
+        Scene scene = new Scene(vbox,300,200);
+        window.setScene(scene);
+        window.show();
+
+    }    
+}
