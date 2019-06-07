@@ -1,0 +1,87 @@
+import java.util.Observable;
+
+import com.sun.javafx.css.CssError.StringParsingError;
+import javafx.application.Application;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.geometry.*;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+import jdk.internal.org.objectweb.asm.Handle;
+
+public class Main extends Application {
+    Stage window;
+    Button btn;
+    TreeView<String> tree;
+
+    public static void main(String args[]) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        window = primaryStage;
+        window.setTitle("Tree View");
+
+        TreeItem<String> root,bucky,megan,New;
+        root = new TreeItem<>();
+        root.setExpanded(true);
+
+        //bucky branch
+        bucky = makesBranch("Bucky",root);
+       New = makesBranch("new",bucky);
+        makesBranch("File",bucky);
+        makesBranch("source",bucky);
+
+        //megan branch
+        megan = makesBranch("Megan",root);
+        makesBranch("youtube",megan);
+        makesBranch("flipkart",megan);
+        makesBranch("amazon",megan);
+
+        makesBranch("alibaba",New);
+        makesBranch("ola",New);
+        makesBranch("swiggy",New);
+        //create tree
+        tree = new TreeView<>(root);
+        tree.setShowRoot(false);
+
+        VBox layout = new VBox();
+        layout.getChildren().add(tree);
+        Scene scene = new Scene(layout, 300, 250);
+        window.setScene(scene);
+        window.show();
+    }
+
+    public TreeItem<String> makesBranch(String title,TreeItem<String> parent){
+        TreeItem<String> item = new TreeItem<>(title);
+        item.setExpanded(false);
+        parent.getChildren().add(item);
+        return item;
+    }
+
+    
+}
