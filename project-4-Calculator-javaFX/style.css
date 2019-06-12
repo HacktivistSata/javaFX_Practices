@@ -1,0 +1,22 @@
+#one,#two,#three,#four,#five,#six,#seven,#eight,#nine,#zero,#dot,#clr{
+        -fx-background-color : #E3E2DF;
+}
+#num_grid_layout{
+    -fx-background-color : #E3E2DF;
+}
+#one:hover,#two:hover,#three:hover,#four:hover,#five:hover,#six:hover,#seven:hover,#eight:hover,#nine:hover,#zero:hover,#dot:hover,#clr:hover{
+        -fx-background-color : #BAB2B5;
+}
+#divison,#add,#multiply,#subtract,#equal{
+        -fx-background-color:#282828;
+            -fx-text-fill:white;
+}
+#divison:hover,#add:hover,#multiply:hover,#subtract:hover,#equal:hover{
+         -fx-background-color:#4E4E50;
+}
+#textfield{
+    -fx-background-color:silver;
+}
+#opar_grid_layout{
+    -fx-background-color:#282828;
+}
